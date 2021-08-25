@@ -1,2 +1,2 @@
-# study-template
+# Academe template
 Template for students
