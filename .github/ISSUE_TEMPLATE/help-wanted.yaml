@@ -2,7 +2,7 @@ name: Help Wanted
 description: Create help request
 labels: ['help wanted']
 assignees:
-  - TFK70
+  - TorinAsakura
 body:
   - type: input
     id: scope
