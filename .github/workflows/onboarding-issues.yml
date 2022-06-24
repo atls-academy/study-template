@@ -1,0 +1,47 @@
+name: Introduction issues
+on:
+  workflow_dispatch:
+  create:
+jobs:
+  Run:
+    name: 'Run'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Read first template
+        id: template1
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./.github/ISSUE_TEMPLATE/Standards of Сommunication and Interaction in the Team Onboarding.md
+      - name: Read second template
+        id: template2
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./.github/ISSUE_TEMPLATE/Github Rules Onboarding.md
+      - name: Echo package.json
+        run: echo ${{ steps.package.outputs.content }}
+      - uses: actions/github-script@v3
+        with:
+          github-token: ${{ secrets.ACCESS_TOKEN }}
+          script: |                        
+            const body1 = function(){/*${{ steps.template1.outputs.content }}*/}.toString()            
+            const body2 = function(){/*${{ steps.template2.outputs.content }}*/}.toString()                
+            const assignees = [context.repo.repo.split('.')[0]]
+            github.issues.create({
+              title: 'First issue',
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              assignees,
+              labels: ['good first issue'],
+              body: body1.slice(13,-3)
+            })
+            
+            github.issues.create({
+              title: 'Second issue',
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              assignees,
+              labels: ['good first issue'],
+              body: body2.slice(13,-3)
+            })
