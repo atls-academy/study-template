@@ -23,13 +23,13 @@ jobs:
         run: echo ${{ steps.package.outputs.content }}
       - uses: actions/github-script@v3
         with:
-          github-token: ${{ secrets.ACCESS_TOKEN }}
+          github-token: ${{ secrets.DSM_TOKEN }}
           script: |                        
             const body1 = function(){/*${{ steps.template1.outputs.content }}*/}.toString()            
             const body2 = function(){/*${{ steps.template2.outputs.content }}*/}.toString()                
             const assignees = [context.repo.repo.split('.')[0]]
             github.issues.create({
-              title: 'First issue',
+              title: 'Нормы общения и взаимодействия в команде',
               owner: context.repo.owner,
               repo: context.repo.repo,
               assignees,
@@ -38,7 +38,7 @@ jobs:
             })
             
             github.issues.create({
-              title: 'Second issue',
+              title: 'Правила работы с GitHub',
               owner: context.repo.owner,
               repo: context.repo.repo,
               assignees,
