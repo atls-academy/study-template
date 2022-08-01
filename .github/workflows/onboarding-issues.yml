@@ -1,7 +1,6 @@
 name: Introduction issues
 on:
   workflow_dispatch:
-  create:
 jobs:
   Run:
     name: 'Run'
