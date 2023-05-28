@@ -12,7 +12,7 @@ jobs:
         id: template1
         uses: juliangruber/read-file-action@v1
         with:
-          path: ./.github/ISSUE_TEMPLATE/Standards of Сommunication and Interaction in the Team Onboarding.md
+          path: ./.github/ISSUE_TEMPLATE/Standards of Communication and Interaction in the Team Onboarding.md
       - name: Read second template
         id: template2
         uses: juliangruber/read-file-action@v1
